@@ -19,7 +19,7 @@ int main(array<String^>^ args) {
 	listener->Bind(endpoint);
 	listener->Listen(2);
 
-	Console::Write("Server is listening... ");
+	Console::Write("Server is listening on {0}... ", ip);
 
 	Socket^ server = listener->Accept();  // accept one connection from the listener.
 	Console::WriteLine("Connection established.");
