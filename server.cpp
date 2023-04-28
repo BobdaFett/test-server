@@ -17,7 +17,7 @@ int main(array<String^>^ args) {
 	Socket^ listener = gcnew Socket(ip->AddressFamily, SocketType::Stream, ProtocolType::Tcp);
 
 	listener->Bind(endpoint);
-	listener->Listen(2);
+	listener->Listen(1);
 
 	Console::Write("Server is listening on {0}... ", ip);
 
@@ -48,17 +48,19 @@ int main(array<String^>^ args) {
 		}
 	}
 	catch (EndOfStreamException^ e) {
-		Console::WriteLine("The client has terminated the connection.");
+		Console::WriteLine("\n\nThe client has terminated the connection.");
 	}
 	catch (IOException^ e) {
 		Console::WriteLine("An error has occurred:\n{0}", e);
 	}
 	
+	Console::Write("Shutting down... ");
+
 	server->Shutdown(SocketShutdown::Both);
 	server->Close();
 	ns->Close();
 
-	Console::WriteLine("Shutting down... ");
-	Console::Write("Press any key...");
+	Console::WriteLine("Complete.");
+	Console::Write("\nPress any key to exit...");
 	Console::ReadKey();
 }
