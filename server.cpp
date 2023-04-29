@@ -5,8 +5,6 @@ using namespace System::IO;
 using namespace System::Net;
 using namespace System::Net::Sockets;
 
-#include <cstdlib>
-
 int main(array<String^>^ args) {
 	int port = 2345;
 	
@@ -59,7 +57,7 @@ int main(array<String^>^ args) {
 	server->Shutdown(SocketShutdown::Both);
 	server->Close();
 	ns->Close();
-
+	
 	Console::WriteLine("Complete.");
 	Console::Write("\nPress any key to exit...");
 	Console::ReadKey();
